@@ -10,7 +10,6 @@ class ColoursDetailViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.text = "Colour Detail"
         label.font = UIFont.systemFont(ofSize: Constants.titleFontSize, weight: .bold)
         return label
     }()
@@ -30,13 +29,12 @@ class ColoursDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureUI()
+        setup()
     }
 
     // MARK: - Methods
 
-    private func configureUI() {
+    private func setup() {
         view.backgroundColor = backgroundColor
         configureColourNameLabel()
         configurePressButton()
@@ -44,11 +42,12 @@ class ColoursDetailViewController: UIViewController {
 
     private func configureColourNameLabel() {
         colourNameLabel.text = colourName
+        colourNameLabel.font = UIFont.systemFont(ofSize: Constants.titleFontSize, weight: .bold)
         view.addSubview(colourNameLabel)
 
         NSLayoutConstraint.activate([
             colourNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            colourNameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            colourNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.colourNameTopAnchor)
         ])
     }
 
@@ -58,14 +57,14 @@ class ColoursDetailViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             pressButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pressButton.topAnchor.constraint(equalTo: colourNameLabel.bottomAnchor, constant: Constants.pressButtonTopAnchor),
+            pressButton.centerYAnchor.constraint(equalTo: view.centerYAnchor), // Center the button vertically
             pressButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.pressButtonWidthAnchor),
             pressButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: Constants.pressButtonHeightAnchor)
         ])
     }
 
     @objc private func pressButtonTapped() {
-        // Do the button thing that it's supposed to do here Lucas !!
+        // Do the button thing that it's supposed to do here
     }
 }
 
@@ -77,5 +76,6 @@ extension ColoursDetailViewController {
         static let pressButtonTopAnchor: CGFloat = 14
         static let pressButtonWidthAnchor: CGFloat = 0.5
         static let pressButtonHeightAnchor: CGFloat = 0.25
+        static let colourNameTopAnchor: CGFloat = 16
     }
 }

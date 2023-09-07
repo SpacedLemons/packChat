@@ -151,17 +151,17 @@ extension ColoursViewController {
         static let scrollViewLeadingAnchor: CGFloat = 10
         static let scrollViewTrailingAnchor: CGFloat = -10
         static let scrollViewTitleLabelTopAnchor: CGFloat = 16
-        static let stackViewTopAnchor: CGFloat = 100
-        static let textSpacing: CGFloat = 10
+        static let stackViewTopAnchor: CGFloat = 120
         static let titleLabelFontSize: CGFloat = 24
         static let titleLabelTopAnchor: CGFloat = 16
         static let titleLabelHeightAnchor: CGFloat = 30
         static let titleLabelWidthAnchor: CGFloat = 250
-        static let arrowLabelWidthHeightAnchor: CGFloat = 10
+        static let arrowLabelWidthHeightAnchor: CGFloat = 20
         static let arrowLabelTopAnchor: CGFloat = 4
         static let recentlySelectedTitleHeightAnchor: CGFloat = 20
         static let recentlySelectedTitleTopAnchor: CGFloat = 40
         static let recentlySelectedTitleFontSize: CGFloat = 18
         static let fontTitleSize: CGFloat = 24
+        static let textSpacing: CGFloat = 10
     }
 }
