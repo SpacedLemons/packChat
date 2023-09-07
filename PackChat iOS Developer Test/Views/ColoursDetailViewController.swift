@@ -64,7 +64,11 @@ class ColoursDetailViewController: UIViewController {
     }
 
     @objc private func pressButtonTapped() {
-        // Do the button thing that it's supposed to do here
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.delayBeforeAlert) {
+            let alertController = UIAlertController(title: "Delayed Alert", message: "This alert appears after 3 seconds", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -77,5 +81,6 @@ extension ColoursDetailViewController {
         static let pressButtonWidthAnchor: CGFloat = 0.5
         static let pressButtonHeightAnchor: CGFloat = 0.25
         static let colourNameTopAnchor: CGFloat = 16
+        static let delayBeforeAlert: CGFloat = 3
     }
 }
