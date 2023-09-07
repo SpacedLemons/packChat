@@ -23,7 +23,7 @@ class ColoursViewController: UIViewController {
         let label = UILabel()
         label.text = "PackChat iOS Test"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: Constants.titleLabelFontSize, weight: .bold)
         label.textColor = .black
         return label
     }()
@@ -32,7 +32,7 @@ class ColoursViewController: UIViewController {
         let label = UILabel()
         label.text = "Most Recently Selected"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: Constants.recentlySelectedTitleFontSize, weight: .medium)
         label.textColor = .black
         return label
     }()
@@ -41,7 +41,7 @@ class ColoursViewController: UIViewController {
         let label = UILabel()
         label.text = "↓"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: Constants.titleLabelFontSize, weight: .medium)
         label.textColor = .black
         return label
     }()
@@ -105,33 +105,33 @@ class ColoursViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.alwaysBounceVertical = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         selectColoursStackView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         recentlySelectedTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         arrowLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            recentlySelectedTitleLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
+            recentlySelectedTitleLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: Constants.recentlySelectedTitleTopAnchor),
             recentlySelectedTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             recentlySelectedTitleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            recentlySelectedTitleLabel.heightAnchor.constraint(equalToConstant: 20),
+            recentlySelectedTitleLabel.heightAnchor.constraint(equalToConstant: Constants.recentlySelectedTitleHeightAnchor),
 
-            arrowLabel.topAnchor.constraint(equalTo: recentlySelectedTitleLabel.bottomAnchor, constant: 4),
+            arrowLabel.topAnchor.constraint(equalTo: recentlySelectedTitleLabel.bottomAnchor, constant: Constants.arrowLabelTopAnchor),
             arrowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            arrowLabel.heightAnchor.constraint(equalToConstant: 20),
-            arrowLabel.widthAnchor.constraint(equalToConstant: 20)
+            arrowLabel.heightAnchor.constraint(equalToConstant: Constants.arrowLabelWidthHeightAnchor),
+            arrowLabel.widthAnchor.constraint(equalToConstant: Constants.arrowLabelWidthHeightAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.titleLabelTopAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 30),
-            titleLabel.widthAnchor.constraint(equalToConstant: 250),
+            titleLabel.heightAnchor.constraint(equalToConstant: Constants.titleLabelHeightAnchor),
+            titleLabel.widthAnchor.constraint(equalToConstant: Constants.titleLabelWidthAnchor),
             
-            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.scrollViewTitleLabelTopAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.scrollViewLeadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: Constants.scrollViewTrailingAnchor),
             scrollView.heightAnchor.constraint(equalToConstant: Constants.scrollViewHeightConstraint),
@@ -150,8 +150,18 @@ extension ColoursViewController {
         static let scrollViewHeightConstraint: CGFloat = 140
         static let scrollViewLeadingAnchor: CGFloat = 10
         static let scrollViewTrailingAnchor: CGFloat = -10
+        static let scrollViewTitleLabelTopAnchor: CGFloat = 16
         static let stackViewTopAnchor: CGFloat = 100
         static let textSpacing: CGFloat = 10
         static let titleLabelFontSize: CGFloat = 24
+        static let titleLabelTopAnchor: CGFloat = 16
+        static let titleLabelHeightAnchor: CGFloat = 30
+        static let titleLabelWidthAnchor: CGFloat = 250
+        static let arrowLabelWidthHeightAnchor: CGFloat = 10
+        static let arrowLabelTopAnchor: CGFloat = 4
+        static let recentlySelectedTitleHeightAnchor: CGFloat = 20
+        static let recentlySelectedTitleTopAnchor: CGFloat = 40
+        static let recentlySelectedTitleFontSize: CGFloat = 18
+        static let fontTitleSize: CGFloat = 24
     }
 }
