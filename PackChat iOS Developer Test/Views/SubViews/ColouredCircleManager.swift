@@ -1,37 +1,55 @@
 import UIKit
 
 class ColouredCircleManager {
-    var xOffset: CGFloat = Constants.offsetSpacing
-    var colours: [(name: String, colour: UIColor)] = []
+    private var xOffset: CGFloat = Constants.offsetSpacing
+    private var colours: [ColourData] = []
     var onCircleTapped: ((String, UIColor) -> Void)?
 
-       init(colours: [(name: String, colour: UIColor)]) {
-           self.colours = colours
-       }
+    init(colours: [(name: String, colour: UIColor)]) {
+        self.colours = colours.map { ColourData(name: $0.name, colour: $0.colour) }
+        self.onCircleTapped = nil
+    }
 
-    func addGestureRecognizers(to circleView: UIView) {
+    func colour(forName name: String) -> UIColor? {
+        return colours.first { $0.name == name }?.colour
+    }
+
+    private func addGestureRecognizers(to circleView: UIView) {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:)))
         circleView.addGestureRecognizer(tapGesture)
     }
 
     @objc func circleTapped(_ sender: UITapGestureRecognizer) {
         if let view = sender.view, view.tag < colours.count {
-            let colourName = colours[view.tag].name
-            let colour = colours[view.tag].colour
-            onCircleTapped?(colourName, colour)
+            let index = view.tag
+            let colourInfo = colours[index]
+            onCircleTapped?(colourInfo.name, colourInfo.colour)
         }
     }
 
     func addColouredCircles(to scrollView: UIScrollView) {
         for index in 0..<colours.count {
-            let colourInfo = colours[index]
-            createCircle(with: colourInfo, at: index, in: scrollView)
+            createCircle(at: index, in: scrollView)
         }
         updateScrollViewContentSize(for: scrollView)
     }
 
-    func createCircle(with colourInfo: (name: String, colour: UIColor), at index: Int, in scrollView: UIScrollView) {
-        let (circleView, colourLabel) = generateCircleAndLabel(with: colourInfo)
+    private func createCircle(at index: Int, in scrollView: UIScrollView) {
+        guard index < colours.count else {
+            return
+        }
+
+        let colourInfo = colours[index]
+
+        let circleView = UIView()
+        circleView.backgroundColor = colourInfo.colour
+        circleView.layer.cornerRadius = Constants.circleCornerRadius
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.isUserInteractionEnabled = true
+
+        let colourLabel = UILabel()
+        colourLabel.text = colourInfo.name
+        colourLabel.translatesAutoresizingMaskIntoConstraints = false
 
         circleView.tag = index
         addGestureRecognizers(to: circleView)
@@ -41,23 +59,7 @@ class ColouredCircleManager {
         setupCircleViewConstraints(circleView: circleView, andLabel: colourLabel, in: scrollView)
     }
 
-    func generateCircleAndLabel(with colourInfo: (name: String, colour: UIColor)) -> (UIView, UILabel) {
-        let (name, colour) = colourInfo
-
-        let circleView = UIView()
-        circleView.backgroundColor = colour
-        circleView.layer.cornerRadius = Constants.circleCornerRadius
-        circleView.translatesAutoresizingMaskIntoConstraints = false
-        circleView.isUserInteractionEnabled = true
-
-        let colourLabel = UILabel()
-        colourLabel.text = name
-        colourLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        return (circleView, colourLabel)
-    }
-
-    func setupCircleViewConstraints(circleView: UIView, andLabel colourLabel: UILabel, in scrollView: UIScrollView) {
+    private func setupCircleViewConstraints(circleView: UIView, andLabel colourLabel: UILabel, in scrollView: UIScrollView) {
         NSLayoutConstraint.activate([
             circleView.widthAnchor.constraint(equalToConstant: Constants.circleDiameter),
             circleView.heightAnchor.constraint(equalToConstant: Constants.circleDiameter),
@@ -71,17 +73,17 @@ class ColouredCircleManager {
         xOffset += Constants.circleSpacing
     }
 
-    func updateScrollViewContentSize(for scrollView: UIScrollView) {
-        scrollView.contentSize = CGSize(width: xOffset, height: Constants.scrollViewHeight)
+    private func updateScrollViewContentSize(for scrollView: UIScrollView) {
+        scrollView.contentSize = CGSize(width: xOffset, height: Constants.expandedScrollViewHeight)
     }
 }
 
 extension ColouredCircleManager {
     enum Constants {
         static let circleDiameter: CGFloat = 50
-        static let circleSpacing: CGFloat = 70
+        static let circleSpacing: CGFloat = 75
         static let circleCornerRadius: CGFloat = 25
-        static let scrollViewHeight: CGFloat = 110
         static let offsetSpacing: CGFloat = 10
+        static let expandedScrollViewHeight: CGFloat = 130
     }
 }

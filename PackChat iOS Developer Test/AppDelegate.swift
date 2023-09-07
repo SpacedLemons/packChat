@@ -1,7 +1,3 @@
-//
-//  Copyright © 2023 The Beans Group. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
