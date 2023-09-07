@@ -11,7 +11,7 @@ class ColoursDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.text = "Colour Detail"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: Constants.titleFontSize, weight: .bold)
         return label
     }()
 
@@ -19,9 +19,9 @@ class ColoursDetailViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Press Me", for: .normal)
         button.backgroundColor = .clear
-        button.layer.borderWidth = 4.0
+        button.layer.borderWidth = Constants.buttonBorderWidth
         button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 10.0
+        button.layer.cornerRadius = Constants.buttonCornerRadius
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -58,9 +58,9 @@ class ColoursDetailViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             pressButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pressButton.topAnchor.constraint(equalTo: colourNameLabel.bottomAnchor, constant: 14),
-            pressButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
-            pressButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25)
+            pressButton.topAnchor.constraint(equalTo: colourNameLabel.bottomAnchor, constant: Constants.pressButtonTopAnchor),
+            pressButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.pressButtonWidthAnchor),
+            pressButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: Constants.pressButtonHeightAnchor)
         ])
     }
 
