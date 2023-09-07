@@ -5,47 +5,53 @@ class ColoursViewController: UIViewController {
 
     let scrollView = UIScrollView()
     let selectColoursStackView = UIStackView()
-    var xOffset: CGFloat = Constants.offsetSpacing
-    var selectedColours: [String] = []
 
-    let colours: [(name: String, colour: UIColor)] = [
-        ("Red", .systemRed),
-        ("Yellow", .systemYellow),
-        ("Green", .systemGreen),
-        ("Blue", .systemBlue),
-        ("Orange", .systemOrange),
-        ("Purple", .systemPurple)
-    ]
+    private let circleManager = ColouredCircleManager(colours: [
+         ("Red", .systemRed),
+         ("Yellow", .systemYellow),
+         ("Green", .systemGreen),
+         ("Blue", .systemBlue),
+         ("Orange", .systemOrange),
+         ("Purple", .systemPurple),
+         ("Brown", .systemBrown),
+         ("Cyan", .systemCyan)
+     ])
+
+    var selectedColours: [String] = []
 
     //MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        setupConstraints()
-        setupStackView()
-        addColouredCircles()
+        initialSetup()
     }
 
     //MARK: Methods
 
-    private func setup() {
+    private func initialSetup() {
+        setupUIElements()
+        setupConstraints()
+        setupStackView()
+        setupCircleManager()
+    }
+
+    private func setupUIElements() {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         view.addSubview(selectColoursStackView)
     }
 
-    @objc func circleTapped(_ sender: UITapGestureRecognizer) {
-        if let view = sender.view, view.tag < colours.count {
-            let colourName = colours[view.tag].name
-            let colour = colours[view.tag].colour
-            addColourToSelectedList(colourName)
+    private func setupCircleManager() {
+        circleManager.onCircleTapped = { [weak self] (colourName, colour) in
+            self?.addColourToSelectedList(colourName)
 
             let coloursDetailViewController = ColoursDetailViewController()
             coloursDetailViewController.backgroundColor = colour
             coloursDetailViewController.colourName = colourName
-            self.navigationController?.pushViewController(coloursDetailViewController, animated: true)
+            self?.navigationController?.pushViewController(coloursDetailViewController, animated: true)
         }
+
+        circleManager.addColouredCircles(to: scrollView)
     }
 
     private func addColourToSelectedList(_ colourName: String) {

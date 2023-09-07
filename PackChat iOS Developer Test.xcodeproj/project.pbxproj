@@ -16,7 +16,7 @@
 		0E4C10E22AA9D81000523EFE /* PackChat_iOS_Developer_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C10E12AA9D81000523EFE /* PackChat_iOS_Developer_TestUITests.swift */; };
 		0E4C10E42AA9D81000523EFE /* PackChat_iOS_Developer_TestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C10E32AA9D81000523EFE /* PackChat_iOS_Developer_TestUITestsLaunchTests.swift */; };
 		0E4C10F12AA9EEE500523EFE /* ColoursDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C10F02AA9EEE500523EFE /* ColoursDetailViewController.swift */; };
-		0E4C10F32AA9F1A300523EFE /* ColoursViewController+AddColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C10F22AA9F1A300523EFE /* ColoursViewController+AddColours.swift */; };
+		0E4C10F32AA9F1A300523EFE /* ColouredCircleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C10F22AA9F1A300523EFE /* ColouredCircleManager.swift */; };
 		0E4C10FE2AA9F6B600523EFE /* cheering.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C10FD2AA9F6B600523EFE /* cheering.mp3 */; };
 		0E4C10FF2AA9F6B600523EFE /* cheering.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C10FD2AA9F6B600523EFE /* cheering.mp3 */; };
 		0E4C11002AA9F6B600523EFE /* cheering.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C10FD2AA9F6B600523EFE /* cheering.mp3 */; };
@@ -53,7 +53,7 @@
 		0E4C10E12AA9D81000523EFE /* PackChat_iOS_Developer_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackChat_iOS_Developer_TestUITests.swift; sourceTree = "<group>"; };
 		0E4C10E32AA9D81000523EFE /* PackChat_iOS_Developer_TestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackChat_iOS_Developer_TestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0E4C10F02AA9EEE500523EFE /* ColoursDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoursDetailViewController.swift; sourceTree = "<group>"; };
-		0E4C10F22AA9F1A300523EFE /* ColoursViewController+AddColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColoursViewController+AddColours.swift"; sourceTree = "<group>"; };
+		0E4C10F22AA9F1A300523EFE /* ColouredCircleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColouredCircleManager.swift; sourceTree = "<group>"; };
 		0E4C10FD2AA9F6B600523EFE /* cheering.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cheering.mp3; path = ../../../Downloads/cheering.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,9 +108,7 @@
 				0E4C10FD2AA9F6B600523EFE /* cheering.mp3 */,
 				0E4C10C02AA9D80F00523EFE /* AppDelegate.swift */,
 				0E4C10C22AA9D80F00523EFE /* SceneDelegate.swift */,
-				0E4C10F42AA9F1B700523EFE /* Extensions */,
-				0E4C10C42AA9D80F00523EFE /* ColoursViewController.swift */,
-				0E4C10F02AA9EEE500523EFE /* ColoursDetailViewController.swift */,
+				0E4C10F42AA9F1B700523EFE /* Views */,
 				0E4C10C92AA9D81000523EFE /* Assets.xcassets */,
 				0E4C10CB2AA9D81000523EFE /* LaunchScreen.storyboard */,
 				0E4C10CE2AA9D81000523EFE /* Info.plist */,
@@ -135,12 +133,22 @@
 			path = "PackChat iOS Developer TestUITests";
 			sourceTree = "<group>";
 		};
-		0E4C10F42AA9F1B700523EFE /* Extensions */ = {
+		0E4C10F42AA9F1B700523EFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0E4C10F22AA9F1A300523EFE /* ColoursViewController+AddColours.swift */,
+				0E4C11012AAA29B700523EFE /* SubViews */,
+				0E4C10C42AA9D80F00523EFE /* ColoursViewController.swift */,
+				0E4C10F02AA9EEE500523EFE /* ColoursDetailViewController.swift */,
 			);
-			path = Extensions;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0E4C11012AAA29B700523EFE /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				0E4C10F22AA9F1A300523EFE /* ColouredCircleManager.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E4C10F32AA9F1A300523EFE /* ColoursViewController+AddColours.swift in Sources */,
+				0E4C10F32AA9F1A300523EFE /* ColouredCircleManager.swift in Sources */,
 				0E4C10C52AA9D80F00523EFE /* ColoursViewController.swift in Sources */,
 				0E4C10C12AA9D80F00523EFE /* AppDelegate.swift in Sources */,
 				0E4C10C32AA9D80F00523EFE /* SceneDelegate.swift in Sources */,
