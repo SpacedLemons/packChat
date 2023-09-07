@@ -3,8 +3,8 @@ import UIKit
 class ColoursViewController: UIViewController {
     //MARK: UI Element
 
-    let scrollView = UIScrollView()
-    let selectColoursStackView = UIStackView()
+    private let scrollView = UIScrollView()
+    private let selectColoursStackView = UIStackView()
 
     var selectedColours: [String] = []
 

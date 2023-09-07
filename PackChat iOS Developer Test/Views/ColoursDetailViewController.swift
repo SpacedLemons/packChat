@@ -5,7 +5,7 @@ class ColoursDetailViewController: UIViewController {
     var backgroundColor: UIColor?
     var colourName: String?
 
-    let colourNameLabel: UILabel = {
+    private let colourNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
