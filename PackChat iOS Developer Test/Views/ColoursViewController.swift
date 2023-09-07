@@ -114,23 +114,23 @@ class ColoursViewController: UIViewController {
         arrowLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-               recentlySelectedTitleLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
-               recentlySelectedTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-               recentlySelectedTitleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-               recentlySelectedTitleLabel.heightAnchor.constraint(equalToConstant: 20),
+            recentlySelectedTitleLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
+            recentlySelectedTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            recentlySelectedTitleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            recentlySelectedTitleLabel.heightAnchor.constraint(equalToConstant: 20),
 
-               arrowLabel.topAnchor.constraint(equalTo: recentlySelectedTitleLabel.bottomAnchor, constant: 4),
-                arrowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                arrowLabel.heightAnchor.constraint(equalToConstant: 20),
-                arrowLabel.widthAnchor.constraint(equalToConstant: 20)
-           ])
+            arrowLabel.topAnchor.constraint(equalTo: recentlySelectedTitleLabel.bottomAnchor, constant: 4),
+            arrowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            arrowLabel.heightAnchor.constraint(equalToConstant: 20),
+            arrowLabel.widthAnchor.constraint(equalToConstant: 20)
+        ])
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 30),
             titleLabel.widthAnchor.constraint(equalToConstant: 250),
-
+            
             scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.scrollViewLeadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: Constants.scrollViewTrailingAnchor),
